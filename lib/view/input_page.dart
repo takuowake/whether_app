@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_keyboard_visibility/flutter_keyboard_visibility.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:whether_app/service/weather_api_client.dart';
 
 import '../components/button_widget.dart';
 import '../config/config.dart';
@@ -58,7 +59,7 @@ class InputPage extends ConsumerWidget {
                   label: '検索',
                   press: () {
                     // 都市名をURLに組み込む
-                    Repository repository = Repository();
+                    Repository repository = Repository(api: WeatherApiClient());
                     repository.fetchWeather(cityName.state);
                     Navigator.pushNamed(context, '/result');
                   },

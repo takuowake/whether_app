@@ -1,9 +1,11 @@
 import 'package:whether_app/service/weather_api_client.dart';
 
-// APIを取得するためのメソッドをRepositoryから呼び出す
 class Repository {
-  final _api = WeatherApiClient();
+  final WeatherApiClient api;
+
+  Repository({required this.api});
+
   dynamic fetchWeather(String? location) async {
-    return _api.fetchWeather(location);
+    return api.fetchWeather(location);
   }
 }
